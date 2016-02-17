@@ -69,6 +69,42 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Class1.cs" />
+    <Compile Include="Assets\DXFConvert\BLOCKS.cs" />
+    <Compile Include="Assets\DXFConvert\BLOCKS\BLOCK.cs" />
+    <Compile Include="Assets\DXFConvert\BLOCKS\ENDBLK.cs" />
+    <Compile Include="Assets\DXFConvert\CLASSES.cs" />
+    <Compile Include="Assets\DXFConvert\CLASSES\CLASS.cs" />
+    <Compile Include="Assets\DXFConvert\DXFImage.cs" />
+    <Compile Include="Assets\DXFConvert\DXFStructure.cs" />
+    <Compile Include="Assets\DXFConvert\ENTITIES.cs" />
+    <Compile Include="Assets\DXFConvert\ENTITIES\ARC.cs" />
+    <Compile Include="Assets\DXFConvert\ENTITIES\CIRCLE.cs" />
+    <Compile Include="Assets\DXFConvert\ENTITIES\ELLIPSE.cs" />
+    <Compile Include="Assets\DXFConvert\ENTITIES\ENTITIE.cs" />
+    <Compile Include="Assets\DXFConvert\ENTITIES\INSERT.cs" />
+    <Compile Include="Assets\DXFConvert\ENTITIES\LINE.cs" />
+    <Compile Include="Assets\DXFConvert\ENTITIES\LWPOLYLINE.cs" />
+    <Compile Include="Assets\DXFConvert\ENTITIES\TEXT.cs" />
+    <Compile Include="Assets\DXFConvert\Entity.cs" />
+    <Compile Include="Assets\DXFConvert\HEADER.cs" />
+    <Compile Include="Assets\DXFConvert\HEADER\H_Variables.cs" />
+    <Compile Include="Assets\DXFConvert\OBJECTS.cs" />
+    <Compile Include="Assets\DXFConvert\OBJECTS\OBJECT.cs" />
+    <Compile Include="Assets\DXFConvert\SECTION.cs" />
+    <Compile Include="Assets\DXFConvert\TABLES.cs" />
+    <Compile Include="Assets\DXFConvert\TABLES\APPID.cs" />
+    <Compile Include="Assets\DXFConvert\TABLES\BLOCK_RECORD.cs" />
+    <Compile Include="Assets\DXFConvert\TABLES\DIMSTYLE.cs" />
+    <Compile Include="Assets\DXFConvert\TABLES\LAYER.cs" />
+    <Compile Include="Assets\DXFConvert\TABLES\LTYPE.cs" />
+    <Compile Include="Assets\DXFConvert\TABLES\STYLE.cs" />
+    <Compile Include="Assets\DXFConvert\TABLES\TABLE.cs" />
+    <Compile Include="Assets\DXFConvert\TABLES\UCS.cs" />
+    <Compile Include="Assets\DXFConvert\TABLES\VIEW.cs" />
+    <Compile Include="Assets\DXFConvert\TABLES\VPORT.cs" />
+    <Compile Include="Assets\DXFConvert\THUMBNAILIMAGE.cs" />
+    <Compile Include="Assets\DXFConvert\Unit\StringExtension.cs" />
     <Compile Include="Assets\NewBehaviourScript.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
