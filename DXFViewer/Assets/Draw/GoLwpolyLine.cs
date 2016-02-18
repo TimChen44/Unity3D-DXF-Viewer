@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-using TimCommon.DXFConvert;
+using DXFConvert;
 
 //多段线
 //[RequireComponent(typeof(LineRenderer))]

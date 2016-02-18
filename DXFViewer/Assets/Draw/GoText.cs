@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-using TimCommon.DXFConvert;
+using DXFConvert;
 
 //文本
 [RequireComponent(typeof(TextMesh))]

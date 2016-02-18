@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Loader;
 
-
-namespace TimCommon.DXFConvert
+namespace DXFConvert
 {
     //http://docs.autodesk.com/ACD/2011/CHS/filesDXF/WS1a9193826455f5ff18cb41610ec0a2e719-7a51.htm
     public class LAYER : TABLESonBase
@@ -22,8 +22,8 @@ namespace TimCommon.DXFConvert
 //347	Material 对象的硬指针 ID/句柄
 
 
-        public LAYER(DXFImage dxfImage, Property prop)
-            : base(dxfImage, prop)
+        public LAYER(ILoader dxfData, Property prop)
+            : base(dxfData, prop)
         {
            
         }

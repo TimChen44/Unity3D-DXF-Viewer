@@ -1,60 +1,61 @@
-﻿using System;
+﻿using Loader;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
 
-namespace TimCommon.DXFConvert
+namespace DXFConvert
 {
     public class DXFStructure
     {
-        private DXFImage DXFImage;
+        private ILoader DXFData;
 
         public DXFStructure() { }
 
-        public DXFStructure(DXFImage dxfImage)
+        public DXFStructure(ILoader dxfData)
         {
-            DXFImage = dxfImage;
+            DXFData = dxfData;
         }
 
         public void Load()
         {
-            Property prop = DXFImage.Next();
+            Property prop = DXFData.Next();
             while (prop != null)
             {
                 switch (prop.Value)
                 {
                     case "HEADER":
-                        HEADER = new HEADER(DXFImage, prop);
+                        HEADER = new HEADER(DXFData, prop);
                         prop = HEADER.ReadProperties();
                         break;
                     case "CLASSES":
-                        CLASSES = new CLASSES(DXFImage, prop);
+                        CLASSES = new CLASSES(DXFData, prop);
                         prop = CLASSES.ReadProperties();
                         break;
                     case "TABLES":
-                        TABLES = new TABLES(DXFImage, prop);
+                        TABLES = new TABLES(DXFData, prop);
                         prop = TABLES.ReadProperties();
                         break;
                     case "BLOCKS":
-                        BLOCKS = new BLOCKS(DXFImage, prop);
+                        BLOCKS = new BLOCKS(DXFData, prop);
                         prop = BLOCKS.ReadProperties();
                         break;
                     case "ENTITIES":
-                        ENTITIES = new ENTITIES(DXFImage, prop);
+                        ENTITIES = new ENTITIES(DXFData, prop);
                         prop = ENTITIES.ReadProperties();
                         break;
                     case "OBJECTS":
-                        OBJECTS = new OBJECTS(DXFImage, prop);
+                        OBJECTS = new OBJECTS(DXFData, prop);
                         prop = OBJECTS.ReadProperties();
                         break;
                     case "THUMBNAILIMAGE":
-                        THUMBNAILIMAGE = new THUMBNAILIMAGE(DXFImage, prop);
+                        THUMBNAILIMAGE = new THUMBNAILIMAGE(DXFData, prop);
                         prop = THUMBNAILIMAGE.ReadProperties();
                         break;
                     default:
-                        prop = DXFImage.Next();
+                        prop = DXFData.Next();
                         break;
                 }
                 //

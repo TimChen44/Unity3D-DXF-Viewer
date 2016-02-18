@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Loader;
 
-
-namespace TimCommon.DXFConvert
+namespace DXFConvert
 {
     //http://docs.autodesk.com/ACD/2011/CHS/filesDXF/WSfacf1429558a55de185c428100849a0ab7-5e1a.htm
     public class TABLES : SECTION
@@ -13,8 +13,8 @@ namespace TimCommon.DXFConvert
 
         public List<TABLE> TABLEList { get; set; }
 
-        public TABLES(DXFImage dxfImage, Property prop)
-            : base(dxfImage, prop)
+        public TABLES(ILoader dxfData, Property prop)
+            : base(dxfData, prop)
         {
             TABLEList = new List<TABLE>();
         }
@@ -24,11 +24,11 @@ namespace TimCommon.DXFConvert
             switch (prop.Value)
             {
                 case "TABLE":
-                    TABLE entity = new TABLE(DXFImage, prop);
+                    TABLE entity = new TABLE(DXFData, prop);
                     TABLEList.Add(entity);
                     return entity.ReadProperties();
                 case "ENDTAB":
-                    return DXFImage.Next();
+                    return DXFData.Next();
                 default:
                     return base.ReadSonClass(prop);
             }

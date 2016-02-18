@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-using TimCommon.DXFConvert;
+using DXFConvert;
 
 [RequireComponent(typeof(LineRenderer))]
 public class GoLine : MonoBehaviour, IResizeObject

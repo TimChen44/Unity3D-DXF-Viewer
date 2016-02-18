@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using Loader;
 
-
-namespace TimCommon.DXFConvert
+namespace DXFConvert
 {
     public class TABLE : Entity
     {
@@ -14,8 +14,8 @@ namespace TimCommon.DXFConvert
         public List<LAYER> LAYERList { get; set; }
 
 
-        public TABLE(DXFImage dxfImage, Property prop)
-            : base(dxfImage, prop)
+        public TABLE(ILoader dxfData, Property prop)
+            : base(dxfData, prop)
         {
             LAYERList = new List<LAYER>();
         }
@@ -25,25 +25,25 @@ namespace TimCommon.DXFConvert
             switch (prop.Value)
             {
                 case "APPID":
-                    return CreateSonClass(new VPORT(DXFImage, prop));
+                    return CreateSonClass(new VPORT(DXFData, prop));
                 case "BLOCK_RECORD":
-                    return CreateSonClass(new BLOCK_RECORD(DXFImage, prop));
+                    return CreateSonClass(new BLOCK_RECORD(DXFData, prop));
                 case "DIMSTYLE":
-                    return CreateSonClass(new DIMSTYLE(DXFImage, prop));
+                    return CreateSonClass(new DIMSTYLE(DXFData, prop));
                 case "LAYER":
-                    var layer = new LAYER(DXFImage, prop);
+                    var layer = new LAYER(DXFData, prop);
                     LAYERList.Add(layer);
                     return layer.ReadProperties();
                 case "LTYPE":
-                    return CreateSonClass(new LTYPE(DXFImage, prop));
+                    return CreateSonClass(new LTYPE(DXFData, prop));
                 case "STYLE":
-                    return CreateSonClass(new STYLE(DXFImage, prop));
+                    return CreateSonClass(new STYLE(DXFData, prop));
                 case "UCS":
-                    return CreateSonClass(new UCS(DXFImage, prop));
+                    return CreateSonClass(new UCS(DXFData, prop));
                 case "VIEW":
-                    return CreateSonClass(new VIEW(DXFImage, prop));
+                    return CreateSonClass(new VIEW(DXFData, prop));
                 case "VPORT":
-                    return CreateSonClass(new VPORT(DXFImage, prop));
+                    return CreateSonClass(new VPORT(DXFData, prop));
                 default:
                     return base.ReadSonClass(prop);
             }
@@ -70,8 +70,8 @@ namespace TimCommon.DXFConvert
     {
         public TABLESonBase() { }
 
-        public TABLESonBase(DXFImage dxfImage, Property prop)
-            : base(dxfImage, prop)
+        public TABLESonBase(ILoader dxfData, Property prop)
+            : base(dxfData, prop)
         {
         }
 
@@ -80,14 +80,14 @@ namespace TimCommon.DXFConvert
             //是属性，那么特别待遇了
             if (prop.Value.Length > 0 && prop.Value[0] == '{')
             {
-                ACAD_XDICTIONARY hv = new ACAD_XDICTIONARY(DXFImage, prop);
+                ACAD_XDICTIONARY hv = new ACAD_XDICTIONARY(DXFData, prop);
                 Sons.Add(hv);
                 var lastProp = hv.ReadProperties();
                 return lastProp;
             }
             else if (prop.Code == 102 && prop.Value == "}")
             {
-                return DXFImage.Next();
+                return DXFData.Next();
             }
             else
             {
@@ -108,8 +108,8 @@ namespace TimCommon.DXFConvert
     /// </summary>
     public class ACAD_XDICTIONARY : Entity
     {
-        public ACAD_XDICTIONARY(DXFImage dxfImage, Property prop)
-            : base(dxfImage, prop) { }
+        public ACAD_XDICTIONARY(ILoader dxfData, Property prop)
+            : base(dxfData, prop) { }
 
         protected override bool ReadProperty(Property prop)
         {

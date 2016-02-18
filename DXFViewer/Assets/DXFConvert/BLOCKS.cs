@@ -1,18 +1,19 @@
-﻿using System;
+﻿using Loader;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
 
-namespace TimCommon.DXFConvert
+namespace DXFConvert
 {
     //http://docs.autodesk.com/ACD/2011/CHS/filesDXF/WSfacf1429558a55de185c428100849a0ab7-5e01.htm
     public class BLOCKS : SECTION
     {
         public BLOCKS() { }
 
-        public BLOCKS(DXFImage dxfImage, Property prop)
-            : base(dxfImage, prop)
+        public BLOCKS(ILoader dxfData, Property prop)
+            : base(dxfData, prop)
         {
             BLOCKList = new List<BLOCK>();
             ENDBLKList = new List<ENDBLK>();
@@ -26,11 +27,11 @@ namespace TimCommon.DXFConvert
             switch (prop.Value)
             {
                 case "BLOCK":
-                    var block = new BLOCK(DXFImage, prop);
+                    var block = new BLOCK(DXFData, prop);
                     BLOCKList.Add(block);
                     return block.ReadProperties();
                 case "ENDBLK":
-                    var endblk = new ENDBLK(DXFImage, prop);
+                    var endblk = new ENDBLK(DXFData, prop);
                     ENDBLKList.Add(endblk);
                     return endblk.ReadProperties();
                 default:

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Loader;
 
-
-namespace TimCommon.DXFConvert
+namespace DXFConvert
 {
     //http://docs.autodesk.com/ACD/2011/CHS/filesDXF/WS1a9193826455f5ff18cb41610ec0a2e719-79fe.htm
     public class LINE : ENTITIE
@@ -31,8 +31,8 @@ namespace TimCommon.DXFConvert
 
 
 
-        public LINE(DXFImage dxfImage, Property prop)
-            : base(dxfImage, prop)
+        public LINE(ILoader dxfData, Property prop)
+            : base(dxfData, prop)
         {
 
         }

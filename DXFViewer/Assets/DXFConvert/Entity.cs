@@ -3,20 +3,20 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using Loader;
 
-
-namespace TimCommon.DXFConvert
+namespace DXFConvert
 {
     //所有实体
     public  class Entity
     {
-        protected DXFImage DXFImage;
+        protected ILoader DXFData;
 
         public Entity() { }
 
-        public Entity(DXFImage dxfImage, Property prop)
+        public Entity(ILoader dxfData, Property prop)
         {
-            DXFImage = dxfImage;
+            DXFData = dxfData;
             C = prop.Code;
             V = prop.Value.Trim();
             Sons = new List<Entity>();
@@ -45,7 +45,7 @@ namespace TimCommon.DXFConvert
         /// <returns>返回最后一个读取的属性</returns>
         public Property ReadProperties()
         {
-            Property prop = DXFImage.Next();
+            Property prop = DXFData.Next();
             bool isEnd = false;
             while (isEnd == false   ) 
             {
@@ -54,7 +54,7 @@ namespace TimCommon.DXFConvert
                 {//不是子类，直接读取属性
                     isEnd = ReadProperty(prop);
                     if (isEnd == false)//如果没有退出就读取下一条记录，如果是退出，那么直接返回当前退出记录
-                        prop = DXFImage.Next();
+                        prop = DXFData.Next();
                 }
                 else
                 {//如果有子类，那么对下一个再次进行子类判断

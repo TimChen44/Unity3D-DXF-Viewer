@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Loader;
 
-
-namespace TimCommon.DXFConvert
+namespace DXFConvert
 {
     //http://docs.autodesk.com/ACD/2011/CHS/filesDXF/WS1a9193826455f5ff18cb41610ec0a2e719-79fc.htm
     public class LWPOLYLINE : ENTITIE
@@ -30,8 +30,8 @@ namespace TimCommon.DXFConvert
 
         public List<P2D> P2D { get; set; }
 
-        public LWPOLYLINE(DXFImage dxfImage, Property prop)
-            : base(dxfImage, prop)
+        public LWPOLYLINE(ILoader dxfData, Property prop)
+            : base(dxfData, prop)
         {
             P2D = new List<P2D>();
         }
@@ -51,7 +51,7 @@ namespace TimCommon.DXFConvert
                     P2D.Add(new P2D()
                     {
                         X = prop.Value.ToDouble(),
-                        Y = DXFImage.Next().Value.ToDouble(),
+                        Y = DXFData.Next().Value.ToDouble(),
                     });
                     break;
                 default:

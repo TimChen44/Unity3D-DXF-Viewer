@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Loader;
 
-
-namespace TimCommon.DXFConvert
+namespace DXFConvert
 {
     //http://docs.autodesk.com/ACD/2011/CHS/filesDXF/WS1a9193826455f5ff18cb41610ec0a2e719-79d1.htm
     public class TEXT : ENTITIE
@@ -31,8 +31,8 @@ namespace TimCommon.DXFConvert
         //100	子类标记 (AcDbText)
         //73	文字垂直对正类型（可选；默认值 = 0）整数代码（不是按位编码）	0 = 基线对正；1 = 底端对正；2 = 居中对正；3 = 顶端对正	详细信息请参见组 72 和 73 整数代码表
 
-        public TEXT(DXFImage dxfImage, Property prop)
-            : base(dxfImage, prop)
+        public TEXT(ILoader dxfData, Property prop)
+            : base(dxfData, prop)
         {
 
         }

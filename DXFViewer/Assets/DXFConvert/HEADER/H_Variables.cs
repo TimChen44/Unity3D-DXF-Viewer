@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Loader;
 
-
-namespace TimCommon.DXFConvert
+namespace DXFConvert
 {
     /// <summary>
     /// 头部变量读取
@@ -13,8 +13,8 @@ namespace TimCommon.DXFConvert
     {
         public H_Variables() { }
 
-        public H_Variables(DXFImage dxfImage, Property prop)
-            : base(dxfImage, prop) { }
+        public H_Variables(ILoader dxfData, Property prop)
+            : base(dxfData, prop) { }
 
         protected override bool  ReadProperty(Property prop)
         {

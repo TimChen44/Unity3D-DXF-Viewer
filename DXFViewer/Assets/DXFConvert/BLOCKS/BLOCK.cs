@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using Loader;
 
-
-namespace TimCommon.DXFConvert
+namespace DXFConvert
 {
     //http://docs.autodesk.com/ACD/2011/CHS/filesDXF/WS1a9193826455f5ff18cb41610ec0a2e719-7a43.htm
     public class BLOCK : Entity
@@ -30,8 +30,8 @@ namespace TimCommon.DXFConvert
         //1	外部参照路径名
         //4	块说明（可选）
 
-        public BLOCK(DXFImage dxfImage, Property prop)
-            : base(dxfImage, prop)
+        public BLOCK(ILoader dxfData, Property prop)
+            : base(dxfData, prop)
         {
             LINEList = new List<LINE>();
             LWPOLYLINEList = new List<LWPOLYLINE>();
@@ -60,36 +60,36 @@ namespace TimCommon.DXFConvert
                     //case "C3DSOLID":
                     //case "ACAD_PROXY_ENTITY":
                     case "ARC":
-                        var arc = new ARC(DXFImage, prop);
+                        var arc = new ARC(DXFData, prop);
                         ARCList.Add(arc);
                         return arc.ReadProperties();
                     //case "ATTDEF":
                     //case "ATTRIB":
                     //case "BODY":
                     case "CIRCLE":
-                        var circle = new CIRCLE(DXFImage, prop);
+                        var circle = new CIRCLE(DXFData, prop);
                         CIRCLEList.Add(circle);
                         return circle.ReadProperties();
                     //case "DIMENSION":
                     case "ELLIPSE":
-                        var ellipes = new ELLIPSE(DXFImage, prop);
+                        var ellipes = new ELLIPSE(DXFData, prop);
                         ELLIPSEList.Add(ellipes);
                         return ellipes.ReadProperties();
                     //case "HATCH":
                     //case "HELIX":
                     //case "IMAGE":
                     case "INSERT":
-                        var insert = new INSERT(DXFImage, prop);
+                        var insert = new INSERT(DXFData, prop);
                         INSERTList.Add(insert);
                         return insert.ReadProperties();
                     //case "LEADER":
                     //case "LIGHT":                    
                     case "LINE":
-                        var line = new LINE(DXFImage, prop);
+                        var line = new LINE(DXFData, prop);
                         LINEList.Add(line);
                         return line.ReadProperties();
                     case "LWPOLYLINE":
-                        var lwpolyline = new LWPOLYLINE(DXFImage, prop);
+                        var lwpolyline = new LWPOLYLINE(DXFData, prop);
                         LWPOLYLINEList.Add(lwpolyline);
                         return lwpolyline.ReadProperties();
                     //case "MESH": 
@@ -112,7 +112,7 @@ namespace TimCommon.DXFConvert
                     //case "SURFACE": 
                     //case "TABLE": 
                     case "TEXT":
-                        var text = new TEXT(DXFImage, prop);
+                        var text = new TEXT(DXFData, prop);
                         TEXTList.Add(text);
                         return text.ReadProperties();
                     //case "TOLERANCE": 
@@ -124,10 +124,7 @@ namespace TimCommon.DXFConvert
                     //case "XLINE": 
 
                     default:
-
-                       
-
-                        return CreateSonClass(new ENTITIE(DXFImage, prop));
+                        return CreateSonClass(new ENTITIE(DXFData, prop));
                 }
             }
             else

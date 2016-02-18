@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-using TimCommon.DXFConvert;
+using DXFConvert;
 using System.Collections.Generic;
 using System.Linq;
 public class GoView : MonoBehaviour

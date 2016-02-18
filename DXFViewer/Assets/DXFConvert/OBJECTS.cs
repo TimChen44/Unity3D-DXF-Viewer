@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Loader;
 
-
-namespace TimCommon.DXFConvert
+namespace DXFConvert
 {
     //http://docs.autodesk.com/ACD/2011/CHS/filesDXF/WSfacf1429558a55de185c428100849a0ab7-5d8d.htm
    public  class OBJECTS: SECTION
     {
        public OBJECTS() { }
 
-       public OBJECTS(DXFImage dxfImage, Property prop)
-            : base(dxfImage, prop)
+       public OBJECTS(ILoader dxfData, Property prop)
+            : base(dxfData, prop)
         {
         }
 
@@ -23,7 +23,7 @@ namespace TimCommon.DXFConvert
                switch (prop.Value)
                {
                    default:
-                       return CreateSonClass(new OBJECT(DXFImage, prop));
+                       return CreateSonClass(new OBJECT(DXFData, prop));
                }
            }
            else

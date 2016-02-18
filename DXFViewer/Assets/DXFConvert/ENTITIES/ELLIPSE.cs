@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
-namespace TimCommon.DXFConvert
+using Loader;
+namespace DXFConvert
 {
     public class ELLIPSE : ENTITIE
     {
@@ -24,8 +24,8 @@ namespace TimCommon.DXFConvert
         public double C42 { get; set; }//42	端点参数 （对于闭合椭圆，该值为 2pi）
 
 
-        public ELLIPSE(DXFImage dxfImage, Property prop)
-            : base(dxfImage, prop)
+        public ELLIPSE(ILoader dxfData, Property prop)
+            : base(dxfData, prop)
         {
 
         }

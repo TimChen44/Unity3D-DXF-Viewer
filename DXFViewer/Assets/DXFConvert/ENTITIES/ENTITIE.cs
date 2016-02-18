@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Loader;
 
-
-namespace TimCommon.DXFConvert
+namespace DXFConvert
 {
     //http://docs.autodesk.com/ACD/2011/CHS/filesDXF/WS1a9193826455f5ff18cb41610ec0a2e719-7a3d.htm
     public class ENTITIE : Entity
@@ -42,8 +42,8 @@ namespace TimCommon.DXFConvert
         //284	阴影模式	0 = 投射和接收阴影	1 = 投射阴影	2 = 接收阴影	3 = 忽略阴影
 
 
-        public ENTITIE(DXFImage dxfImage, Property prop)
-            : base(dxfImage, prop)
+        public ENTITIE(ILoader dxfData, Property prop)
+            : base(dxfData, prop)
         {
 
         }

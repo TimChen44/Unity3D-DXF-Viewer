@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-using TimCommon.DXFConvert;
+using DXFConvert;
 
 //圆弧
 [RequireComponent(typeof(LineRenderer))]

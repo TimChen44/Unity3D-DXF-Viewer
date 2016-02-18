@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 
 
-namespace TimCommon.DXFConvert
+namespace DXFConvert
 {
    public static  class StringExtension
     {

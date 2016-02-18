@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using Loader;
 
-
-namespace TimCommon.DXFConvert
+namespace DXFConvert
 {
     //段基类
     public abstract class SECTION : Entity
     {
         public SECTION() { }
 
-        public SECTION(DXFImage dxfImage, Property prop)
-            : base(dxfImage, prop)
+        public SECTION(ILoader dxfData, Property prop)
+            : base(dxfData, prop)
         {
 
         }
