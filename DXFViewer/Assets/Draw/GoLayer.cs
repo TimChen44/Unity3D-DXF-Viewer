@@ -35,7 +35,7 @@ public class GoLayer : EntitiesBase
         }
         else
         {
-            LayerMaterial.color = Color.black;
+            LayerMaterial.color = Color.white;
             ZoomAdjust = 0.8f;//默认颜色的层线段宽度做限制
 
         }
@@ -75,8 +75,8 @@ public class GoLayer : EntitiesBase
          {4,new Color(0f,1f,1f) },
          {5,new Color(0f,0f,1f) },
          {6,new Color(1f,0f,1f) },
-         {7,new Color(0f,0f,0f) },
-         {8,new Color(0f,0f,0f) },
+         {7,new Color(0f,0f,0f)},//new Color(0f,0f,0f) },
+         {8,new Color(0f,0f,0f)},//new Color(0f,0f,0f) },
          {9,new Color(0f,0f,0f) },
          {10,new Color(1f,0f,0f) },
          {11,new Color(1f,0.5f,0.5f) },

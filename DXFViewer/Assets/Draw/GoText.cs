@@ -32,7 +32,7 @@ public class GoText : MonoBehaviour, IResizeObject
         tm.color = GoView.Content.GetLayerMaterial(item.C8).color;
         transform.position = new Vector3((float)item.C10, (float)item.C20, (float)item.C30);
         tm.text = item.C1;
-        tm.characterSize = (float)item.C40;
+        tm.characterSize = (float)item.C40/5;
 
         HideSize = tm.characterSize * tm.text.Length;
 
