@@ -3,7 +3,7 @@
 
 #效果图
 **Unity3D**
-![alt tag](https://github.com/TimChen44/Unity3D-DXF-Viewer/doc/u.png)
+![alt tag](https://github.com/TimChen44/Unity3D-DXF-Viewer/blob/master/doc/u.png)
 
 **PC**
-![alt tag](https://github.com/TimChen44/Unity3D-DXF-Viewer/doc/pc.png)
+![alt tag](https://github.com/TimChen44/Unity3D-DXF-Viewer/blob/master/doc/pc.png)
