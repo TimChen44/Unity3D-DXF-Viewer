@@ -6,7 +6,7 @@ using System.IO;
 
 namespace Loader
 {
-    public class DiskFile : ILoader
+    public class DiskFile : ILoader,IDisposable
     {
         public DiskFile(string fileName)
         {
@@ -38,5 +38,13 @@ namespace Loader
                 return null;
             }
         }
+
+        public void Dispose()
+        {
+            if (FStream != null)
+                FStream.Close();
+        }
+
+       
     }
 }

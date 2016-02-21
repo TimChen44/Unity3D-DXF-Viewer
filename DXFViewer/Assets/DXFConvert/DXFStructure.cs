@@ -86,42 +86,42 @@ namespace DXFConvert
         /// </summary>
         public void LossCompression(LossCompressionConfig config)
         {
-            int compression = 0;
-            //对多段线进行压缩
-            foreach (var LWPOLYLINE in ENTITIES.LWPOLYLINEList)
-            {
-                for (int i = 0; i < LWPOLYLINE.P2D.Count - 2; i++)
-                {
-                    P2D p1 = LWPOLYLINE.P2D[i];
-                    P2D p2 = LWPOLYLINE.P2D[i + 1];
-                    P2D p3 = LWPOLYLINE.P2D[i + 2];
+            //int compression = 0;
+            ////对多段线进行压缩
+            //foreach (var LWPOLYLINE in ENTITIES.LWPOLYLINEList)
+            //{
+            //    for (int i = 0; i < LWPOLYLINE.P2D.Count - 2; i++)
+            //    {
+            //        P2D p1 = LWPOLYLINE.P2D[i];
+            //        P2D p2 = LWPOLYLINE.P2D[i + 1];
+            //        P2D p3 = LWPOLYLINE.P2D[i + 2];
 
-                    //计算出两条线的夹角
-                    var A = Math.Atan2(p2.Y - p1.Y, p2.X - p1.X);
-                    var B = Math.Atan2(p3.Y - p2.Y, p3.X - p2.X);
-                    var C = (B - A) / Math.PI * 180;
-                    var abcC = Math.Abs(C);
+            //        //计算出两条线的夹角
+            //        var A = Math.Atan2(p2.Y - p1.Y, p2.X - p1.X);
+            //        var B = Math.Atan2(p3.Y - p2.Y, p3.X - p2.X);
+            //        var C = (B - A) / Math.PI * 180;
+            //        var abcC = Math.Abs(C);
 
-                    //计算出两条线最远端的距离
-                    var d2 = ((p1.X - p3.X) * (p1.X - p3.X) + (p1.Y - p3.Y) * (p1.Y - p3.Y)) / 2;
+            //        //计算出两条线最远端的距离
+            //        var d2 = ((p1.X - p3.X) * (p1.X - p3.X) + (p1.Y - p3.Y) * (p1.Y - p3.Y)) / 2;
 
-                    if (d2 <= config.Length2)
-                    {
-                        //计算当前长度所在的比例
-                        var bl = (d2 - config.Length1) / (config.Length2 - config.Length1);
-                        //计算当前角度
-                        var bd = (config.Deg2 - config.Deg1) * (1 - bl) + config.Deg1;
+            //        if (d2 <= config.Length2)
+            //        {
+            //            //计算当前长度所在的比例
+            //            var bl = (d2 - config.Length1) / (config.Length2 - config.Length1);
+            //            //计算当前角度
+            //            var bd = (config.Deg2 - config.Deg1) * (1 - bl) + config.Deg1;
 
-                        if ((abcC >= 0 && abcC <= bd) || (abcC >= 180 - bd && abcC <= 180 + bd) || (abcC >= 360 - bd && abcC <= 360))
-                        {
-                            LWPOLYLINE.P2D.RemoveAt(i + 1);
-                            compression++;
+            //            if ((abcC >= 0 && abcC <= bd) || (abcC >= 180 - bd && abcC <= 180 + bd) || (abcC >= 360 - bd && abcC <= 360))
+            //            {
+            //                LWPOLYLINE.P2D.RemoveAt(i + 1);
+            //                compression++;
 
-                            if (config.IsDoubleCompression == true) i--;
-                        }
-                    }
-                }
-            }
+            //                if (config.IsDoubleCompression == true) i--;
+            //            }
+            //        }
+            //    }
+            //}
 
          
         }
